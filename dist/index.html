@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="src/css/normalize.css">
+    <link rel="stylesheet" href="src/css/style.css">
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="stepOne">
+        <span class="stepTitle">{{ message }}</span>
+        <small>Open your console and type ```stepOne.message = 'STRING' ```</small>
+      </div>
+      <code>
+          var mainContent = new Vue({
+            el: '#content',
+            data: {
+              message: 'Hello Vue'
+            }
+          });
+      </code>
+    </div>
+
+    <div class="container">
+      <div id='stepTwo' v-bind:title='message'>
+        <span class="stepTitle">Hover to see the time this page is loaded</span>
+      </div>
+      <code>
+        var stepTwo = new Vue({
+          el: '#stepTwo',
+          data: {
+            message: 'You loaded this page on ' + new Date().toLocaleString()
+          }
+        });
+      </code>
+    </div>
+
+    <div class="container">
+      <div id="stepThree">
+        <span class="stepTitle">Creating an loop with Vue</span>
+        <ul>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="stepFour">
+        <span class='stepTitle'>{{ message }}</span>
+
+        <input v-model='message'>
+
+      </div>
+    </div>
+
+  </body>
+  <script type="text/javascript">
+    var stepOne = new Vue({
+      el: '#stepOne',
+      data: {
+        message: 'Hello Vue'
+      }
+    });
+
+    var stepTwo = new Vue({
+      el: '#stepTwo',
+      data: {
+        message: 'You loaded this page on ' + new Date().toLocaleString()
+      }
+    });
+
+    var stepThree = new Vue({
+      el: '#stepThree',
+      data: {
+        todos: [
+        { text: 'Learn JavaScript' },
+        { text: 'Learn Vue' },
+        { text: 'Learn WordPress x JavaScript x Vue' }
+        ]
+      }
+    });
+
+    var stepFour = new Vue({
+      el: '#stepFour',
+      data: {
+        message: 'This is called reactive'
+      }
+    });
+
+  </script>
+</html>
